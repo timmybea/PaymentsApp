@@ -1,0 +1,53 @@
+The Goal
+To create a command line app called Payments that models an on-line payment module
+The app will generate a random dollar value that simulates an online purchase and will display this to the user
+The user will be asked to select from 3 payment methods: Paypal, Stripe or Amazon
+Once they select a payment method the app processes the amount using the selected method
+We will use delegation to accomplish this
+
+******
+
+Let's Add canProcessPayment to the Protocol
+
+Since the concrete payment class might not be able to process the payment at this time, let's ask it to check if it can process the request before we actually send it the request.
+
+To do this, add a method to the PaymentDelegate. This should return a BOOL. Let's name it canProcessPayment. Go ahead and add this method to the protocol.
+
+Inside the method implementation on each of the concrete payment classes let's use arc4random_uniform() to generate either 0 or 1. If it generates 0 then return NO. If it generates 1 then return YES.
+
+Now, add the additional logic inside the PaymentGateway's processPaymentAmount: and check to see if the currently set concrete payment class can actually process the payment. If it can, then send the message. If it can't, then you can just output an apology to the user to inform them that their payment cannot be processed.
+
+Your console output should end up looking something like this:
+
+
+******
+How to Create a Protocol
+A. Create a Protocol that defines what messages the delegate can receive.
+
+@protocol GreeterDelegate
+
+-(BOOL)shouldSayHello;
+
+@end
+
+B. Add a delegate property to your delegator
+
+@property (nonatomic, weak) id<GreeterDelegate> delegate;
+
+C. From your delegator, send messages to your delegate.
+
+[self.delegate shouldSayHello];
+
+D. Adopt the protocol in the definition of a class you've created.
+
+@interface FriendlyGreetingDecider : NSObject <GreeterDelegate>;
+
+E. Implement how your delegate responds to the methods in the protocol.
+
+-(BOOL)shouldSayHello {
+
+return YES;
+}
+
+F. Connect your delegator and delegate together.
+greeter.delegate = greetingDecider;
