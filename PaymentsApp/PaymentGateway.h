@@ -11,7 +11,9 @@
 
 @protocol PaymentDelegate
 
-- (void) processPaymentAmount:(NSInteger)price;
+@property (nonatomic) BOOL canProcessPayment;
+
+- (BOOL) processPaymentAmount:(NSInteger)price;
 
 @end
 

@@ -11,4 +11,8 @@
 
 @interface AmazonPaymentService : NSObject <PaymentDelegate>;
 
+@property (nonatomic) BOOL canProcessPayment;
+
+
+
 @end

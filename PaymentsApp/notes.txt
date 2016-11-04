@@ -7,17 +7,7 @@ We will use delegation to accomplish this
 
 ******
 
-Let's Add canProcessPayment to the Protocol
-
-Since the concrete payment class might not be able to process the payment at this time, let's ask it to check if it can process the request before we actually send it the request.
-
-To do this, add a method to the PaymentDelegate. This should return a BOOL. Let's name it canProcessPayment. Go ahead and add this method to the protocol.
-
-Inside the method implementation on each of the concrete payment classes let's use arc4random_uniform() to generate either 0 or 1. If it generates 0 then return NO. If it generates 1 then return YES.
-
-Now, add the additional logic inside the PaymentGateway's processPaymentAmount: and check to see if the currently set concrete payment class can actually process the payment. If it can, then send the message. If it can't, then you can just output an apology to the user to inform them that their payment cannot be processed.
-
-Your console output should end up looking something like this:
+The boss has finally got everything in place for ApplePay. So go ahead and add the ApplePaymentService class. Add the option to select ApplePaymentService to the initial menu of options. Notice that we do not need to make any change to PaymentGateway to add or remove any payment methods.
 
 
 ******

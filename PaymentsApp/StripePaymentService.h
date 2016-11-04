@@ -11,4 +11,8 @@
 
 @interface StripePaymentService : NSObject <PaymentDelegate>;
 
+@property (nonatomic) BOOL canProcessPayment;
+
+
+
 @end

@@ -1,5 +1,5 @@
 //
-//  PaypalPaymentService.h
+//  ApplePayPaymentService.h
 //  PaymentsApp
 //
 //  Created by Tim Beals on 2016-11-04.
@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "PaymentGateway.h"
 
-@interface PaypalPaymentService : NSObject <PaymentDelegate>;
+@interface ApplePayPaymentService : NSObject <PaymentDelegate>
 
 @property (nonatomic) BOOL canProcessPayment;
 

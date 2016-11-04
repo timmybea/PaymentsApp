@@ -1,29 +1,28 @@
 //
-//  AmazonPaymentService.m
+//  ApplePayPaymentService.m
 //  PaymentsApp
 //
 //  Created by Tim Beals on 2016-11-04.
 //  Copyright © 2016 Tim Beals. All rights reserved.
 //
 
-#import "AmazonPaymentService.h"
+#import "ApplePayPaymentService.h"
 
-@interface AmazonPaymentService ()
+@interface ApplePayPaymentService ()
 
 - (BOOL) processPaymentAmount:(NSInteger)price;
-- (void)randBOOL;
 
 @end
 
-@implementation AmazonPaymentService
+@implementation ApplePayPaymentService
 
 - (BOOL) processPaymentAmount:(NSInteger)price {
     [self randBOOL];
     if (self.canProcessPayment == NO) {
-        NSLog(@"Amazon is sorry to inform you that it cannot process your payment at this time.");
+        NSLog(@"ApplePay is sorry to inform you that it cannot process your payment at this time.");
         return NO;
     } else {
-        NSLog(@"Amazon has processed your payment of $%ld", price);
+        NSLog(@"ApplePay has processed your payment of $%ld", price);
         return YES;
     }
 }
@@ -39,7 +38,5 @@
         self.canProcessPayment = YES;
     }
 }
-
-
 
 @end
