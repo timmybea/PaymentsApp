@@ -20,6 +20,6 @@
 
 @interface PaymentGateway : NSObject
 
-@property (nonatomic, weak) id <PaymentDelegate> delegate;
+@property (nonatomic, strong) id <PaymentDelegate> delegate;
 
 @end
