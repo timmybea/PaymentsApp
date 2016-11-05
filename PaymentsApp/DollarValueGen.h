@@ -10,6 +10,6 @@
 
 @interface DollarValueGen : NSObject
 
--(NSInteger)generatePrice;
+- (NSInteger)generatePrice;
 
 @end

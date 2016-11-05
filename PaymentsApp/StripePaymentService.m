@@ -10,31 +10,40 @@
 
 @interface StripePaymentService ()
 
-- (BOOL) processPaymentAmount:(NSInteger)price;
+- (BOOL)processPaymentAmount:(NSInteger)price;
 
 @end
 
+
 @implementation StripePaymentService
 
-- (BOOL) processPaymentAmount:(NSInteger)price {
+- (BOOL)processPaymentAmount:(NSInteger)price
+{
     [self randBOOL];
-    if (self.canProcessPayment == NO) {
+    if (self.canProcessPayment == NO)
+    {
         NSLog(@"Stripe is sorry to inform you that it cannot process your payment at this time.");
         return NO;
-    } else {
+    }
+    else
+    {
         NSLog(@"Stripe has processed your payment of $%ld", price);
         return YES;
     }
 }
 
-- (void)randBOOL {
+- (void)randBOOL
+{
     int lowerBound = 0;
     int upperBound = 2;
     int rndValue = lowerBound + (arc4random() % (upperBound - lowerBound));
     
-    if (rndValue == 0) {
+    if (rndValue == 0)
+    {
         self.canProcessPayment = NO;
-    } else {
+    }
+    else
+    {
         self.canProcessPayment = YES;
     }
 }

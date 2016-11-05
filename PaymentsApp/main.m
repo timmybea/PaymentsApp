@@ -15,21 +15,23 @@
 #import "StripePaymentService.h"
 #import "ApplePayPaymentService.h"
 
-int main(int argc, const char * argv[]) {
-    @autoreleasepool {
+int main(int argc, const char * argv[])
+{
+    @autoreleasepool
+    {
      
         DollarValueGen *dollarGenerator = [[DollarValueGen alloc] init];
         InputHandler *inputHandler = [[InputHandler alloc] init];
         PaymentGateway *paymentGateway = [[PaymentGateway alloc] init];
-        AmazonPaymentService *amazon = [[AmazonPaymentService alloc] init];
-        PaypalPaymentService *paypal = [[PaypalPaymentService alloc] init];
-        StripePaymentService *stripe = [[StripePaymentService alloc] init];
-        ApplePayPaymentService *applePay = [[ApplePayPaymentService alloc] init];
-        BOOL isProcessedPayment = NO;
+        AmazonPaymentService *amazon;
+        PaypalPaymentService *paypal;
+        StripePaymentService *stripe;
+        ApplePayPaymentService *applePay;
+        BOOL isPaymentProcessed = NO;
             
         NSInteger price = [dollarGenerator generatePrice];
         
-        while (isProcessedPayment == NO) {
+        while (isPaymentProcessed == NO) {
             
             NSString *paymentPrompt = [NSString stringWithFormat:@"Thank you for shopping at Acme.com Your total today is $%ld Please select your payment method: Paypal, Stripe, or Amazon, ApplePay", price];
             
@@ -39,28 +41,27 @@ int main(int argc, const char * argv[]) {
             switch (paymentMethod)
             {
                 case 1:
+                    paypal = [[PaypalPaymentService alloc] init];
                     paymentGateway.delegate = paypal;
-                    isProcessedPayment = [paymentGateway.delegate processPaymentAmount: price];
+                    isPaymentProcessed = [paymentGateway.delegate processPaymentAmount: price];
                     break;
                 case 2:
+                    stripe = [[StripePaymentService alloc] init];
                     paymentGateway.delegate = stripe;
-                    isProcessedPayment = [paymentGateway.delegate processPaymentAmount: price];
+                    isPaymentProcessed = [paymentGateway.delegate processPaymentAmount: price];
                     break;
                 case 3:
+                    amazon = [[AmazonPaymentService alloc] init];
                     paymentGateway.delegate = amazon;
-                    isProcessedPayment = [paymentGateway.delegate processPaymentAmount: price];
+                    isPaymentProcessed = [paymentGateway.delegate processPaymentAmount: price];
                     break;
                 case 4:
+                    applePay = [[ApplePayPaymentService alloc] init];
                     paymentGateway.delegate = applePay;
-                    isProcessedPayment = [paymentGateway.delegate processPaymentAmount: price];
+                    isPaymentProcessed = [paymentGateway.delegate processPaymentAmount: price];
                     break;
-                    
             }
-
         }
-            
-        
-        
     }
     return 0;
 }

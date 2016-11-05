@@ -7,10 +7,6 @@ We will use delegation to accomplish this
 
 ******
 
-The boss has finally got everything in place for ApplePay. So go ahead and add the ApplePaymentService class. Add the option to select ApplePaymentService to the initial menu of options. Notice that we do not need to make any change to PaymentGateway to add or remove any payment methods.
-
-
-******
 How to Create a Protocol
 A. Create a Protocol that defines what messages the delegate can receive.
 

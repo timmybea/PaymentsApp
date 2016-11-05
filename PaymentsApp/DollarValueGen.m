@@ -8,19 +8,13 @@
 
 #import "DollarValueGen.h"
 
-@interface DollarValueGen ()
-
-
-
-@end
-
 @implementation DollarValueGen
 
--(NSInteger)generatePrice {
+- (NSInteger)generatePrice
+{
     int lowerBound = 100;
     int upperBound = 1000;
     int rndValue = lowerBound + (arc4random() % (upperBound - lowerBound));
-    
     return rndValue;
 }
 

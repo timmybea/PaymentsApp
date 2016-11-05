@@ -13,9 +13,10 @@
 
 @property (nonatomic) BOOL canProcessPayment;
 
-- (BOOL) processPaymentAmount:(NSInteger)price;
+- (BOOL)processPaymentAmount:(NSInteger)price;
 
 @end
+
 
 @interface PaymentGateway : NSObject
 

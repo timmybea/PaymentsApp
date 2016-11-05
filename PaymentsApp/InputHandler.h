@@ -10,7 +10,6 @@
 
 @interface InputHandler : NSObject
 
-//- (NSString*) inputForPrompt:(NSString *) promptString;
-- (NSInteger) getPaymentMethod: (NSString *) promptString;
+- (NSInteger)getPaymentMethod:(NSString *)promptString;
 
 @end

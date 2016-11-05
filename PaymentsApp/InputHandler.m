@@ -14,43 +14,49 @@
 
 @end
 
+
 @implementation InputHandler
 
--(instancetype)init {
+- (instancetype)init
+{
     self = [super init];
-    if(self) {
-        _commands = @{@"paypal": @1, @"stripe": @2, @"amazon": @3, @"applepay": @4};
+    if(self)
+    {
+        _commands = @{@"paypal":@1, @"stripe":@2, @"amazon":@3, @"applepay":@4};
     }
     return self;
 }
 
--(NSString*) inputForPrompt: (NSString *) promptString {
+- (NSString*)inputForPrompt:(NSString *)promptString
+{
     NSLog(@"%@", promptString);
     NSLog(@"> ");
     char varWord[255];
     fgets (varWord, 255, stdin);
-    NSString *userInput = [NSString stringWithCString: varWord encoding:NSUTF8StringEncoding];
-    userInput = [userInput stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    NSString *userInput = [NSString stringWithCString:varWord encoding:NSUTF8StringEncoding];
+    userInput = [userInput stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
     NSLog(@"Input was %@", userInput);
     return userInput;
 }
 
-- (NSInteger) commandNumber: (NSString*) command {
-        NSString *userInput = [command lowercaseString];
-    if ([userInput isEqualToString:@"paypal"] || [userInput isEqualToString:@"stripe"] || [userInput isEqualToString:@"amazon"] || [userInput isEqualToString:@"applepay"]) {
-        return [[self.commands objectForKey: userInput] integerValue];
-    } else {
-        return [self commandNumber: [self inputForPrompt: @"Invalid payment method. Please try again"]];
+- (NSInteger)commandNumber:(NSString*)command
+{
+    NSString *userInput = [command lowercaseString];
+    if ([userInput isEqualToString:@"paypal"] || [userInput isEqualToString:@"stripe"] || [userInput isEqualToString:@"amazon"] || [userInput isEqualToString:@"applepay"])
+    {
+        return [[self.commands objectForKey:userInput] integerValue];
+    }
+    else
+    {
+        return [self commandNumber:[self inputForPrompt:@"Invalid payment method. Please try again"]];
     }
 }
 
-
-- (NSInteger)getPaymentMethod: (NSString *) promptString {
+- (NSInteger)getPaymentMethod:(NSString *)promptString
+{
     NSInteger payment;
-    payment =  [self commandNumber: [self inputForPrompt: promptString]]
-    ;
+    payment =  [self commandNumber:[self inputForPrompt:promptString]];
     return payment;
 }
-
 
 @end

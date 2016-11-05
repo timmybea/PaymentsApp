@@ -13,6 +13,4 @@
 
 @property (nonatomic) BOOL canProcessPayment;
 
-
-
 @end
